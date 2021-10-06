@@ -7,7 +7,7 @@
 
 int nlicenses = 0;
 
-int initlicens() 
+int initlicense() 
 {
   return(0);
 }
