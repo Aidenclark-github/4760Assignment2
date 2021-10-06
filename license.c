@@ -5,9 +5,19 @@
 
 #include"header.h"
 
-int nlicenses = 0;
+//int nlicenses = 0;
 
-int initlicense() 
+
+struct License {
+    int x;
+};
+  
+int main()
 {
-  return(0);
+    struct License initialize = { 0 };
+
+    initialize.x = 0;
+  
+    printf("Initialized license object %d", initialize.x);
+    return 0;
 }
