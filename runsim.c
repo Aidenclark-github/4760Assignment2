@@ -18,6 +18,12 @@ extern int nlicenses;
 int shmid;
 key_t key;
 
+void deallocateSharedMemory (int sh)
+{
+    shmctl(sh, IPC_RMID, NULL); 
+    exit(1);
+}
+
 
 /* main function */
 int main ( int argc, char *argv[] ) 
@@ -46,6 +52,8 @@ int main ( int argc, char *argv[] )
     if ((sharedMemory = shmat(shmid, NULL, 0)) == (int *) -1) 
     {
         perror("shmat");
+        /* send to deallocate function */
+        deallocateSharedMemory(shmid);
         exit(1);
     }
 }
