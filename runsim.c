@@ -12,7 +12,11 @@ Main Program
 #include<stdlib.h>
 #include "header.h"
 
+#define SHM_SIZE 1024
 extern int nlicenses;
+
+int shmid;
+key_t key;
 
 
 /* main function */
@@ -29,7 +33,21 @@ int main ( int argc, char *argv[] )
         printf( "Error: initlicense()");
         exit(1);    
     }
-    nlicenses = licenseNUMBER; 
+    nlicenses = licenseNUMBER;
+    
+    /* creating segment for data space */
+    int * sharedMemory;
+    if ((shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666)) < 0) 
+    {
+        perror("shmget");
+        exit(1);
+    }
+     /* attaching segment for data space */
+    if ((sharedMemory = shmat(shmid, NULL, 0)) == (int *) -1) 
+    {
+        perror("shmat");
+        exit(1);
+    }
 }
 
 
