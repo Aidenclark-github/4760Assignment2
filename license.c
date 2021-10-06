@@ -5,7 +5,7 @@
 
 #include"header.h"
 
-//int nlicenses = 0;
+int nlicenses = 0;
 
 
 struct License {
