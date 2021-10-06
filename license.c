@@ -12,7 +12,7 @@ struct License {
     int x;
 };
   
-int main()
+int initlicense()
 {
     struct License initialize = { 0 };
 
