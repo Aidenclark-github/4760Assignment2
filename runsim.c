@@ -12,7 +12,7 @@ Main Program
 #include<stdlib.h>
 #include <sys/wait.h>
 
-#include "config.h"
+#include "header.h"
 
 #define MAX_CANON 5
 #define SHM_SIZE 1024
@@ -24,6 +24,7 @@ key_t key;
 void deallocateSharedMemory (int sh)
 {
     shmctl(sh, IPC_RMID, NULL); 
+    perror("runsim Eoror: shmctl (shared memory error)");
     exit(1);
 }
 
@@ -37,12 +38,14 @@ int main ( int argc, char *argv[] )
     if ( argc != 2 ) /* argument count should be 2 for execution */
     {
         printf( "Error: %s filename", argv[0] );
+        perror("runsim Error: argc (argument count error)");
         exit(1);
     }
     int licenseNUMBER = atoi(argv[1]);
     if ( initlicense() != 0)
     {
-        printf( "Error: initlicense()");
+        perror("runsim Error: initlicense (initialize license error)");
+
         exit(1);    
     }
     nlicenses = licenseNUMBER;
@@ -51,13 +54,13 @@ int main ( int argc, char *argv[] )
     int * sharedMemory;
     if ((shmid = shmget(key, SHM_SIZE, IPC_CREAT | 0666)) < 0) 
     {
-        perror("shmget");
+        perror("runsim Error: shmget (shared memory error)");
         exit(1);
     }
      /* attaching segment for data space */
     if ((sharedMemory = shmat(shmid, NULL, 0)) == (int *) -1) 
     {
-        perror("shmat");
+        perror("runsim Error: shmget (shared memory error)");
         /* send to deallocate function */
         deallocateSharedMemory(shmid);
         exit(1);
@@ -72,7 +75,7 @@ int main ( int argc, char *argv[] )
     using fges */
     while(fgets(buffer, MAX_CANON , stdin) != NULL)
     {
-        //getlicense();
+        getlicense();
         
         pid_t  pid, return_pid;
         pid = fork();
@@ -88,11 +91,11 @@ int main ( int argc, char *argv[] )
             return_pid = waitpid(pid, &status, WNOHANG);
             if (return_pid == -1)
             {
-                printf( "Error: waitpid");    
+                perror("runsim Error: fork  and waitpid");    
             } 
             else  
             {
-                //returnlincense();    
+                returnlicense();    
             }    
         }
         /* father code that waits for child code to finsih */
@@ -110,9 +113,9 @@ Notice if  license is not available,
 the request function will go into wait state. */
 void docommand (char* str)
 {
-    //getlicense();
+    getlicense();
     char* argv = str;
-    execl(argv[0], argv); 
+    execl(argv[0], argv);   
 }
 
 
