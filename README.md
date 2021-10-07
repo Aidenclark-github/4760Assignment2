@@ -1,4 +1,8 @@
+
+<iimg style="width: 1200px; height: 150px;" src="https://linuxreviews.org/images/7/7f/Kernel-coding-style-new-speak-rules.jpg" align="middle"  />
+
 #  CS 4760: Project 2 - Concurrent Linux Processes and shared memory
+* [Project Requirements](https://umsystem.instructure.com/courses/21098/assignments/975262)
 ---
 ## Relavent Information:
 **Using the Makefile:**
@@ -29,3 +33,6 @@ Helpful Links:
 * https://www.tutorialspoint.com/c_standard_library/c_function_atoi.htm
 * https://www.java-samples.com/showtutorial.php?tutorialid=597
 * https://stackoverflow.com/questions/17509479/switch-case-for-parsing-options
+
+## Submission Note: 
+I found myself scambling and looking up lots of stuff on the internet. For future projects maybe more coding demonstrations from yourself. They help me out personally and I think the rest of the class would enjoy them. Additionally, I had lots of trouble trying to implement the bakery algorithm. 
