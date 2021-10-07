@@ -10,6 +10,8 @@ Main Program
 #include<string.h>
 #include<errno.h>
 #include<stdlib.h>
+#include <sys/wait.h>
+
 #include "header.h"
 
 #define MAX_CANON 5
@@ -64,6 +66,7 @@ int main ( int argc, char *argv[] )
     *sharedMemory = nlicenses;
     
     char buffer[MAX_CANON];
+    int status;
     printf("Request a license: \n");
     /* read lines from standard input up to the number of MAX_CANON characters
     using fges */
@@ -71,7 +74,7 @@ int main ( int argc, char *argv[] )
     {
         //getlicense();
         
-        pid_t  pid;
+        pid_t  pid, return_pid;
         pid = fork();
         if ( pid == 0)
         {
@@ -82,23 +85,34 @@ int main ( int argc, char *argv[] )
         else
         {
             /* parent process */ 
-            printf("Error");
+            return_pid = waitpid(pid, &status, WNOHANG);
+            if (return_pid == -1)
+            {
+                printf( "Error: waitpid");    
+            } 
+            else  
+            {
+                //returnlincense();    
+            }    
         }
+    /* father code that waits for child code to finsih */
+    while ((return_pid = wait(&status)) > 0);
+    {
+        deallocateSharedMemory(shmid);
     }
     return 0;
+    }
 }
 
-/* docommandwill  request  a  license  
-from  the  license  manager  object.
-Notice thatg if the license is notg available, 
-the request function will go into a wait state. */
+/* docommand will  request  license  
+from  license  manager  object.
+Notice if  license is not available, 
+the request function will go into wait state. */
 void docommand (char* str)
 {
-    getlicense();
-    char** argv = str;
-    execl(argv[0], argv);
-    
-    
+    //getlicense();
+    char* argv = str;
+    execl(argv[0], argv); 
 }
 
 
