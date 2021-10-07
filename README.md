@@ -1,6 +1,12 @@
 # 4760Assignment2
 Concurrent Linux Processes and shared memory
 ---
+## Relavent Information:
+**Using the Makefile:**
+1. `make`: will compile the prgram. 
+2. `./runsim (number of processes) < testing data`: will run the program. 
+3. `make clean`: will clean the Makefile. 
+
 **Task:**
 1. runsim reads a command from stdin in each iteration of its loop and forks a child.
 2. The child, in turn, forks a grandchild that calls execl and executes the application
