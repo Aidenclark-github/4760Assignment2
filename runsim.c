@@ -56,6 +56,8 @@ int main ( int argc, char *argv[] )
         deallocateSharedMemory(shmid);
         exit(1);
     }
+    /* populate with the number of licenses */
+    *sharedMemory = nlicenses;
 }
 
 
