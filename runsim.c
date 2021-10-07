@@ -1,5 +1,7 @@
 /*
 Main Program 
+runsim.c
+To run: runsim (number of processes (L) < testing.data)
 
 */
 #include<stdio.h>
