@@ -12,7 +12,7 @@ Main Program
 #include<stdlib.h>
 #include <sys/wait.h>
 
-#include "header.h"
+#include "config.h"
 
 #define MAX_CANON 5
 #define SHM_SIZE 1024
