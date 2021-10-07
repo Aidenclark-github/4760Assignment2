@@ -58,6 +58,16 @@ int main ( int argc, char *argv[] )
     }
     /* populate with the number of licenses */
     *sharedMemory = nlicenses;
+    
+    char buffer[MAX_CANON];
+    printf("Request a license: \n");
+    /* read lines from standard input up to the number of MAX_CANON characters
+    using fges */
+    while(fgets(buffer, MAX_CANON , stdin) != NULL)
+    {
+        printf("%s\n", buffer);
+    }
+    return 0;
 }
 
 
