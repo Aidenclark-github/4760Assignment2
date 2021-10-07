@@ -95,12 +95,12 @@ int main ( int argc, char *argv[] )
                 //returnlincense();    
             }    
         }
-    /* father code that waits for child code to finsih */
-    while ((return_pid = wait(&status)) > 0);
-    {
-        deallocateSharedMemory(shmid);
-    }
-    return 0;
+        /* father code that waits for child code to finsih */
+        while ((return_pid = wait(&status)) > 0);
+        {
+            deallocateSharedMemory(shmid);
+        }
+        return 0;
     }
 }
 
