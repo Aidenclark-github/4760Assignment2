@@ -1,23 +1,30 @@
-# https://www.cs.swarthmore.edu/~newhall/unixhelp/howto_makefiles.html
-# Source Files: runsim.c testsim.c license.c config.h
+# Type: Make runsim
+# Source Files: runsim.c testsim.c license.c header.h
 # Object files: runsim.o testsim.o license.o
-# Type: Make sim
-    
 
-CC = gcc
-CFLAGS  = -g -Wall
+IDIR =../include
+CC=gcc
+CFLAGS=-I$(IDIR)
 
-sim:  runsim.o testsim.o license.o 
-	$(CC) $(CFLAGS) -o sim runsim.o testsim.o license.o
+ODIR=obj
+LDIR =../lib
 
-runsim.o:  runsim.c 
-	$(CC) $(CFLAGS) -c runsim.c
+LIBS=-lm
 
-testsim.o:  testsim.c 
-	$(CC) $(CFLAGS) -c testsim.c
+_DEPS = runsim.c testsim.c license.c header.h
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-license.o:  license.c 
-	$(CC) $(CFLAGS) -c license.c
+_OBJ = runsim.o testsim.o license.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
-clean: 
-	$(RM) sim *.o *~
+
+$(ODIR)/%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+runsim: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+.PHONY: clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
