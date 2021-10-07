@@ -1,3 +1,5 @@
+
+#define NUM_PROCESSES 20
 extern int nlicenses;
 
 /* Blocks until license is available */
