@@ -1,5 +1,4 @@
-# 4760Assignment2
-Concurrent Linux Processes and shared memory
+#  CS 4760: Project 2 - Concurrent Linux Processes and shared memory
 ---
 ## Relavent Information:
 **Using the Makefile:**
@@ -15,3 +14,18 @@ Concurrent Linux Processes and shared memory
 
 **The critical resource is the license object, or the number of licenses. This will be accessed by the license object’s
 public functions which now constitute the critical section.**
+
+## Resources Used: 
+Book: 
+* Unix™ Systems Programming: Communication, Concurrency, and Threads
+* By Kay A. Robbins, Steven Robbins
+
+
+Creating the Makefile:
+* https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+
+Helpful Links:
+* https://stackoverflow.com/questions/44435549/how-to-make-getopt-long-print-nothing-when-there-is-error-command-line-argumen
+* https://www.tutorialspoint.com/c_standard_library/c_function_atoi.htm
+* https://www.java-samples.com/showtutorial.php?tutorialid=597
+* https://stackoverflow.com/questions/17509479/switch-case-for-parsing-options
