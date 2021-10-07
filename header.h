@@ -10,10 +10,10 @@ int returnlicense(void);
 int initlicense(void);
 
 /* Adds "n: licenses to number available */
-void addtolicenses(int n);
+void addtolicenses(int L);
 
 /* Decrements  number of licenses by "n" */
-void removelicenses(int n); 
+void removelicenses(int L); 
 
 /* Write specified message to log file  */
 void logmsg(const char * msg); 
