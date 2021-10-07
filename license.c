@@ -21,3 +21,13 @@ int initlicense()
     printf("Initialized license object %d", initialize.x);
     return 0;
 }
+
+int getlicense() 
+{
+    return(0);
+}
+
+int returnlicense() 
+{
+    return(0);
+}
