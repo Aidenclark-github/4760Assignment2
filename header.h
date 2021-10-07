@@ -9,10 +9,10 @@ int returnlicense(void);
 /* Performs needed initialization of license object */
 int initlicense(void);
 
-/* Adds "n: licenses to number available */
+/* Adds "L" licenses to number available */
 void addtolicenses(int L);
 
-/* Decrements  number of licenses by "n" */
+/* Decrements  number of licenses by "L" */
 void removelicenses(int L); 
 
 /* Write specified message to log file  */
