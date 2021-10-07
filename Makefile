@@ -1,5 +1,5 @@
 # Type: Make runsim
-# Source Files: runsim.c testsim.c license.c header.h
+# Source Files: runsim.c testsim.c license.c config.h
 # Object files: runsim.o testsim.o license.o
 
 IDIR =../include
@@ -11,7 +11,7 @@ LDIR =../lib
 
 LIBS=-lm
 
-_DEPS = runsim.c testsim.c license.c header.h
+_DEPS = runsim.c testsim.c license.c config.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = runsim.o testsim.o license.o
