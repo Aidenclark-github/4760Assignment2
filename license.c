@@ -3,7 +3,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-#include"header.h"
+#include"config.h"
 
 int nlicenses = 0;
 
