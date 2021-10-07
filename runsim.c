@@ -12,6 +12,7 @@ Main Program
 #include<stdlib.h>
 #include "header.h"
 
+#define MAX_CANON 5
 #define SHM_SIZE 1024
 extern int nlicenses;
 
@@ -23,6 +24,9 @@ void deallocateSharedMemory (int sh)
     shmctl(sh, IPC_RMID, NULL); 
     exit(1);
 }
+
+void docommand (char* str);
+
 
 
 /* main function */
@@ -65,10 +69,36 @@ int main ( int argc, char *argv[] )
     using fges */
     while(fgets(buffer, MAX_CANON , stdin) != NULL)
     {
-        printf("%s\n", buffer);
+        //getlicense();
+        
+        pid_t  pid;
+        pid = fork();
+        if ( pid == 0)
+        {
+            /* child process */
+            docommand(buffer);
+            exit(0);
+        }
+        else
+        {
+            /* parent process */ 
+            printf("Error");
+        }
     }
     return 0;
 }
 
+/* docommandwill  request  a  license  
+from  the  license  manager  object.
+Notice thatg if the license is notg available, 
+the request function will go into a wait state. */
+void docommand (char* str)
+{
+    getlicense();
+    char** argv = str;
+    execl(argv[0], argv);
+    
+    
+}
 
 
